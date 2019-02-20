@@ -98,3 +98,9 @@ E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\WareHouse_Manager.c
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\WareHouse_Manager.csproj.CopyComplete
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\WareHouse_Manager.exe
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\WareHouse_Manager.pdb
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\StatisticalWindow.g.cs
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\InputUC.g.cs
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\StatisticalWindow.baml
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\InputUC.baml
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\SetInventoryDateWindow.g.cs
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\SetInventoryDateWindow.baml

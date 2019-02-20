@@ -22,6 +22,7 @@ namespace WareHouse_Manager.ViewModel
         public ICommand SuplierCommand { get; set; }
         public ICommand CustomerCommand { get; set; }
         public ICommand UnitCommand { get; set; }
+        public ICommand StatisticalCommand { get; set; }
         private string _date;
         public string Date { get=>_date; set {_date=value;OnPropertyChanged(); } }
 
@@ -66,6 +67,7 @@ namespace WareHouse_Manager.ViewModel
             ProductCommand = new RelayCommand<object>(x => { return true; }, x => { ObjectTypeWindow window = new ObjectTypeWindow(); window.ShowDialog(); });
             SuplierCommand = new RelayCommand<object>(x => { return true; }, x => { SuplierWindow window = new SuplierWindow(); window.ShowDialog(); });
             CustomerCommand = new RelayCommand<object>(x => { return true; }, x => { CustomerWindow window = new CustomerWindow(); window.ShowDialog(); });
+            StatisticalCommand =new RelayCommand<object>(x => { return true; }, x => { StatisticalWindow window = new StatisticalWindow(); window.ShowDialog(); });
 
             WindowActivatedCommand = new RelayCommand<Window>(
                 x => true,
