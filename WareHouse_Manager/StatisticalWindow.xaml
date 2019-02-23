@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         x:Name="statisticalWindow"
-        Title="Thống kê - báo cáo" Height="450" Width="800">
+        Title="Thống kê - báo cáo" Height="460" Width="850">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding WindowLoadedCommand}"
@@ -39,13 +39,23 @@
             <Grid Grid.Column="0">
                 <TreeView
                     FontSize="20"
-                    Foreground="Green">
-                    <TreeViewItem Header="Kho">
-                        <TreeViewItem Header="Nhập kho"></TreeViewItem>
-                        <TreeViewItem Header="Xuất kho"></TreeViewItem>
-                        <TreeViewItem Header="Tồn kho"></TreeViewItem>
+                    Foreground="Green"
+                    x:Name="TreeView">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedItemChanged}"
+                                                   CommandParameter="{Binding ElementName=TreeView}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <TreeViewItem Header="Nhập kho">
+                        <TreeViewItem Header="Phiếu nhập"></TreeViewItem>
+                        <TreeViewItem Header="Hàng nhập"></TreeViewItem>
                     </TreeViewItem>
-
+                    <TreeViewItem Header="Xuất kho">
+                        <TreeViewItem Header="Phiếu xuất"></TreeViewItem>
+                        <TreeViewItem Header="Xuất hàng"></TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Tồn kho"></TreeViewItem>
                     <TreeViewItem Header="Nhà cung cấp"></TreeViewItem>
                     <TreeViewItem Header="Khách hàng"></TreeViewItem>
                 </TreeView>
@@ -53,9 +63,9 @@
             <Grid Grid.Column="1"
                   Background="Black">
             </Grid>
-            <materialDesign:Card>
-                <Grid Grid.Column="2" x:Name="Grid_Parrent">
-
+            <materialDesign:Card Grid.Column="2">
+                <Grid
+                    x:Name="Grid_Parrent">
                 </Grid>
             </materialDesign:Card>
         </Grid>

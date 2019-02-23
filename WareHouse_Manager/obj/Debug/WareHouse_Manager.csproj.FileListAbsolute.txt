@@ -104,3 +104,13 @@ E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\StatisticalWindow.b
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\InputUC.baml
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\SetInventoryDateWindow.g.cs
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\SetInventoryDateWindow.baml
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\InputDetailUC.g.cs
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\InputDetailUC.baml
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\CustomerUC.g.cs
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\OutputDetailUC.g.cs
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\OutputUC.g.cs
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\SuplierUC.g.cs
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\CustomerUC.baml
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\OutputDetailUC.baml
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\OutputUC.baml
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\SuplierUC.baml

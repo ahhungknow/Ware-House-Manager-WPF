@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\App.xaml
-145956243
+19969285657
 2-1676159946
-55-215199659
+60949110920
 221258520616
-CustomerWindow.xaml;InputWindow.xaml;LoginWindow.xaml;MainWindow.xaml;OutputWindow.xaml;ObjectTypeWindow.xaml;ResourceXAML\AllResource.xaml;SetInventoryDateWindow.xaml;StatisticalWindow.xaml;SuplierWindow.xaml;UC\ControlBarUC.xaml;UC\InputUC.xaml;UC\NotificationUC.xaml;UnitWindow.xaml;
+CustomerWindow.xaml;InputWindow.xaml;LoginWindow.xaml;MainWindow.xaml;OutputWindow.xaml;ObjectTypeWindow.xaml;ResourceXAML\AllResource.xaml;SetInventoryDateWindow.xaml;StatisticalWindow.xaml;SuplierWindow.xaml;UC\ControlBarUC.xaml;UC\CustomerUC.xaml;UC\InputDetailUC.xaml;UC\InputUC.xaml;UC\NotificationUC.xaml;UC\OutputDetailUC.xaml;UC\OutputUC.xaml;UC\SuplierUC.xaml;UnitWindow.xaml;
 
-False
+True
 

@@ -49,6 +49,7 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <TextBox
+                        FontSize="18"
                         x:Name="txtUsername"
                         materialDesign:HintAssist.Hint="Tên đăng nhập"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -56,6 +57,7 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <PasswordBox
+                        FontSize="18"
                         x:Name="txtPassword"
                         materialDesign:HintAssist.Hint="Mật khẩu"
                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">

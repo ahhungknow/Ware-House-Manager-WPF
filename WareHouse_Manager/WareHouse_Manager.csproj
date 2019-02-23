@@ -156,11 +156,26 @@
     <Compile Include="UC\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UC\CustomerUC.xaml.cs">
+      <DependentUpon>CustomerUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\InputDetailUC.xaml.cs">
+      <DependentUpon>InputDetailUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UC\InputUC.xaml.cs">
       <DependentUpon>InputUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UC\NotificationUC.xaml.cs">
       <DependentUpon>NotificationUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\OutputDetailUC.xaml.cs">
+      <DependentUpon>OutputDetailUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\OutputUC.xaml.cs">
+      <DependentUpon>OutputUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\SuplierUC.xaml.cs">
+      <DependentUpon>SuplierUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UnitWindow.xaml.cs">
       <DependentUpon>UnitWindow.xaml</DependentUpon>
@@ -230,11 +245,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UC\CustomerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\InputDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UC\InputUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UC\NotificationUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\OutputDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\OutputUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\SuplierUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -292,8 +327,6 @@
       <LastGenOutput>AppModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Statistical\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

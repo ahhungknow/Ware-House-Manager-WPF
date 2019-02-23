@@ -41,7 +41,7 @@
 
             <Grid Grid.Column="0">
                 <GroupBox
-                        Margin="0 0 5 0"
+                        Margin="0 0 0 0"
                         Header="Phiếu nhập"
                         FontSize="20"
                         FontWeight="Bold">
@@ -121,11 +121,11 @@
                             </StackPanel>
                         </materialDesign:Card>
                         <materialDesign:Card 
-                         IsEnabled="{Binding ButtonDetailIsEnabled}"
-                        Grid.Row="1"
-                Grid.Column="1"
-                Margin="5 0 5 0"
-                Padding="0 5 0 5">
+                             IsEnabled="{Binding ButtonDetailIsEnabled}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="5 0 5 0"
+                            Padding="0 5 0 5">
                             <StackPanel Orientation="Vertical">
                                 <Grid Grid.Row="1">
                                     <Grid.RowDefinitions>
@@ -207,14 +207,14 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-
+                       
                         <StackPanel 
                     Grid.Column="0"
                     Orientation="Vertical"
                     Margin="5">
                             <TextBox
                             FontWeight="Normal"
-                                
+                              
                         Text="{Binding DisplayName}"
                         FontSize="18"
                         Margin="5"
@@ -289,7 +289,8 @@
                     Grid.Column="0"
                     VerticalAlignment="Stretch"
                     Margin="0 0 5 0">
-                        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                        <ScrollViewer VerticalScrollBarVisibility="Visible" 
+                                      HorizontalScrollBarVisibility="Visible">
                             <ListView
                             FontWeight="Normal"
                             ItemsSource="{Binding InputDetailList}"
