@@ -13,6 +13,7 @@ using WareHouse_Manager.UC;
 using System.IO;
 using Xceed.Words.NET;
 using System.Data;
+using System.Diagnostics;
 
 namespace WareHouse_Manager.ViewModel
 {
@@ -238,8 +239,7 @@ namespace WareHouse_Manager.ViewModel
                     {
                         if (File.Exists(@"newInputReport.docx"))
                         {
-                            Microsoft.Office.Interop.Word.Application application = new Microsoft.Office.Interop.Word.Application();
-                            application.Documents.Open(@"E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\bin\Debug\newInputReport.docx");
+                            Process.Start(@"E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\bin\Debug\newInputReport.docx");
                         }
                         else
                         {
@@ -646,9 +646,9 @@ namespace WareHouse_Manager.ViewModel
         }
         private DocX CreateWordFromTemplate(DocX template)
         {
-            //template.AddCustomProperty(new CustomProperty("Từ ngày: ", StartDateFilter));
-            //template.AddCustomProperty(new CustomProperty("Đến ngày: ", EndDateFilter));
-            //template.AddCustomProperty(new CustomProperty("Tổng tiền nhập hàng: ", total));      
+            template.AddCustomProperty(new CustomProperty("StartDate", StartDateFilter.ToShortDateString()));
+            template.AddCustomProperty(new CustomProperty("EndDate", EndDateFilter.ToShortDateString()));
+            template.AddCustomProperty(new CustomProperty("Total", total+" VNĐ"));
 
             var t = template.Tables[0];
             CreateAndInsertWordTableAfter(t, ref template);
@@ -660,8 +660,9 @@ namespace WareHouse_Manager.ViewModel
             var data = GetDataFromDatabase();
 
             var invoiceTable = t.InsertTableAfterSelf(data.Rows.Count + 1, data.Columns.Count);
-            invoiceTable.Design = TableDesign.LightGridAccent2;
-
+            invoiceTable.Design = TableDesign.ColorfulGridAccent2;
+            invoiceTable.Alignment = Alignment.center;
+           
             var tableTitle = new Formatting();
 
             tableTitle.Bold = true;
