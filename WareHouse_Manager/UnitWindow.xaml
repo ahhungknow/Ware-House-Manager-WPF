@@ -22,7 +22,8 @@
         Name="unitWindow"
         Title="Đơn vị tính" Height="300" Width="500">
 
-    <Grid>
+    <Grid
+        Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>

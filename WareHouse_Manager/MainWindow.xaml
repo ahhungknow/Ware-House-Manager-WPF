@@ -20,7 +20,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Name="mainWindow"
-        Title="Home" Height="450" Width="1000">
+        Title="Home" Height="600" Width="1000">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding WindowLoadedCommand}"
@@ -34,7 +34,8 @@
 
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid>
+    <Grid
+        Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>

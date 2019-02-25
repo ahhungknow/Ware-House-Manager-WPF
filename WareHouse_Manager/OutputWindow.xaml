@@ -41,7 +41,8 @@
 
             <Grid Grid.Column="0">
                 <GroupBox
-                        Margin="0 0 5 0"
+                    Background="AliceBlue"
+                        Margin="0 0 0 0"
                         Header="Phiếu xuất"
                         FontSize="20"
                         FontWeight="Bold">
@@ -196,6 +197,7 @@
                 </GroupBox>
             </Grid>
             <GroupBox 
+                Background="AliceBlue"
                     FontSize="20"
                     FontWeight="Bold"
                     Header="Thông tin"

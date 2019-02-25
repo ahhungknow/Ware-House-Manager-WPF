@@ -21,7 +21,8 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Name="loginWindow"
         Title="Đăng nhập vào phần mềm quản lý kho" Height="300" Width="550">
-    <Grid>
+    <Grid
+        Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>

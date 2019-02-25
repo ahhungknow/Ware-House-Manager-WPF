@@ -19,7 +19,8 @@
                                    CommandParameter="{Binding ElementName=statisticalWindow}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid>
+    <Grid
+        Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -65,7 +66,8 @@
             </Grid>
             <materialDesign:Card Grid.Column="2">
                 <Grid
-                    x:Name="Grid_Parrent">
+                    x:Name="Grid_Parrent"
+                    VerticalAlignment="Stretch">
                 </Grid>
             </materialDesign:Card>
         </Grid>

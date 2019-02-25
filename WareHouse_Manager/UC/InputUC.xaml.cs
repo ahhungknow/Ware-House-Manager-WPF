@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WareHouse_Manager.ViewModel;
 
 namespace WareHouse_Manager.UC
 {
@@ -20,9 +21,11 @@ namespace WareHouse_Manager.UC
     /// </summary>
     public partial class InputUC : UserControl
     {
+        public InputViewModel ViewModel { get; set; }
         public InputUC()
         {
             InitializeComponent();
+            this.DataContext = ViewModel = new InputViewModel();
         }
     }
 }

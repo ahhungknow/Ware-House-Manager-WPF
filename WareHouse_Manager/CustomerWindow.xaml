@@ -22,7 +22,8 @@
         Name="customerWindow"
         Title="Nhập kho" Height="500" Width="700">
 
-    <Grid>
+    <Grid
+        Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>

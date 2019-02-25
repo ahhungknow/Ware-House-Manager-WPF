@@ -22,7 +22,8 @@
         Name="objectTypeWindow"
         Title="Loại hàng" Height="300" Width="500">
 
-    <Grid>
+    <Grid
+        Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>

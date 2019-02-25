@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.SqlServer;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,16 @@ using System.Windows;
 using System.Windows.Input;
 using WareHouse_Manager.Model;
 using WareHouse_Manager.UC;
+using System.IO;
+using Xceed.Words.NET;
+using System.Data;
 
 namespace WareHouse_Manager.ViewModel
 {
     public class InputViewModel:BaseViewModel
     {
         #region Input
+        private int total = 0;
         private ObservableCollection<Inputs> _inputList;
         public ObservableCollection<Inputs> InputList { get=>_inputList; set {_inputList=value;OnPropertyChanged(); } }
         private DateTime _dateInput;
@@ -65,7 +70,7 @@ namespace WareHouse_Manager.ViewModel
         public bool InputIsEnabled { get=>_inputIsEnabled; set { _inputIsEnabled = value; OnPropertyChanged(); } }
         private bool _buttonDetailIsEnabled;
         public bool ButtonDetailIsEnabled { get=>_buttonDetailIsEnabled; set {_buttonDetailIsEnabled=value;OnPropertyChanged(); } }
-
+  
         private Inputs _inputSelectedItem;
         public Inputs InputSelectedItem
         {
@@ -87,6 +92,15 @@ namespace WareHouse_Manager.ViewModel
                 OnPropertyChanged();
             }
         }
+        private DateTime _startDateFilter;
+        public DateTime StartDateFilter  {  get =>_startDateFilter;   set  { _startDateFilter =value;   OnPropertyChanged();  }  }
+        private DateTime _endDateFilter;
+        public DateTime EndDateFilter { get =>_endDateFilter; set{ _endDateFilter = value; OnPropertyChanged(); } }
+        private string _toTalInputMoney;
+        public string TotalInputMoney { get=>_toTalInputMoney; set { _toTalInputMoney = value; OnPropertyChanged(); } }
+        public ICommand FilterInputCommand { get; set; }
+        public ICommand AllInputCommand { get; set; }
+        public ICommand ExportInputReportCommand { get; set; }
         public ICommand SearchInputCommand { get; set; }
         public ICommand AddInputCommand { get; set; }
         public ICommand EditInputCommand { get; set; }
@@ -192,10 +206,52 @@ namespace WareHouse_Manager.ViewModel
             LoadUnitList();
             LoadSuplierList();
             LoadObjectTypeList();
-
             InputDetailCmd = 0;
 
             #region InputCommand
+            FilterInputCommand = new RelayCommand<object>(
+                x => true,
+                x => 
+                {
+                    if (StartDateFilter > EndDateFilter)
+                    {
+                        notification("Ngày kết thúc không được nhỏ hơn", "Thông báo");
+                    }
+                    else
+                    {
+                        FilterInputByDate(StartDateFilter, EndDateFilter);
+                    }
+                });
+
+            AllInputCommand = new RelayCommand<object>(
+                x => true,
+                x =>
+                {
+                    LoadInputDefault();
+                });
+            ExportInputReportCommand = new RelayCommand<object>(
+                x => true,
+                x =>
+                {
+                    exportFile();
+                    try
+                    {
+                        if (File.Exists(@"newInputReport.docx"))
+                        {
+                            Microsoft.Office.Interop.Word.Application application = new Microsoft.Office.Interop.Word.Application();
+                            application.Documents.Open(@"E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\bin\Debug\newInputReport.docx");
+                        }
+                        else
+                        {
+                            notification("Không tìm thấy file báo cáo", "Thông báo");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.ToString());
+                        notification("Lỗi khi tạo báo cáo", "Thông báo");
+                    }
+                });
             SearchInputCommand = new RelayCommand<Window>(
                 x => true, 
                 x => 
@@ -440,6 +496,7 @@ namespace WareHouse_Manager.ViewModel
         }
         void LoadInputDefault()
         {
+            total = 0;
             InputList = new ObservableCollection<Inputs>();
             var inputs = DataProvider.Instance.DB.INPUT;
             if (inputs != null)
@@ -453,12 +510,54 @@ namespace WareHouse_Manager.ViewModel
                         inputss.STATUS = "Chờ thanh toán";
                     else if (item.STATUS == 1)
                         inputss.STATUS = "Đã thanh toán";
+                    var inputDetails = DataProvider.Instance.DB.INPUT_DETAIL.Where(y => y.INPUT_ID == item.ID);
+                    if (inputDetails != null)
+                    {
+                        foreach (var items in inputDetails)
+                        {
+                            inputss.TOTAL += (int)items.IN_PRICE * (int)items.AMOUNT;
+                        }
+                        total += inputss.TOTAL;
+                    }
                     InputList.Add(inputss);
                 }
             }
+            TotalInputMoney = "Tổng số tiền nhập hàng: " + total;
             CurrentStatus = -1;
             InputCmd = 0;
             ButtonDetailIsEnabled = true;
+            StartDateFilter = DateTime.Now;
+            EndDateFilter = DateTime.Now;
+        }
+        void FilterInputByDate(DateTime startDate,DateTime endDate)
+        {
+            total = 0;
+            InputList.Clear();
+            var inputs = DataProvider.Instance.DB.INPUT.Where(x => startDate<=x.DATE_INPUT && endDate>=x.DATE_INPUT);
+            if (inputs != null)
+            {
+                foreach (var item in inputs)
+                {
+                    Inputs inputss = new Inputs();
+                    inputss.ID = item.ID;
+                    inputss.DATE_INPUT = (DateTime)item.DATE_INPUT;
+                    if (item.STATUS == 0)
+                        inputss.STATUS = "Chờ thanh toán";
+                    else if (item.STATUS == 1)
+                        inputss.STATUS = "Đã thanh toán";
+                    var inputDetails = DataProvider.Instance.DB.INPUT_DETAIL.Where(y => y.INPUT_ID == item.ID);
+                    if (inputDetails != null)
+                    {
+                        foreach (var items in inputDetails)
+                        {
+                            inputss.TOTAL += (int)items.IN_PRICE * (int)items.AMOUNT;
+                        }
+                        total += inputss.TOTAL;
+                    }
+                    InputList.Add(inputss);
+                }
+            }
+            TotalInputMoney= "Tổng số tiền nhập hàng: " + total;
         }
         void LoadInputDetailDefault(string InputID = null)
         {
@@ -523,6 +622,81 @@ namespace WareHouse_Manager.ViewModel
         {
             NotificationUC notificationWindow = new NotificationUC(notification, "Thông báo -- " + title);
             notificationWindow.ShowDialog();
+        }
+
+        void exportFile()
+        {
+            DocX docX;
+            try
+            {
+                if (File.Exists(@"InputReportTemplate.docx"))
+                {
+                    docX =CreateWordFromTemplate(DocX.Load(@"InputReportTemplate.docx"));
+                    docX.SaveAs(@"newInputReport.docx");
+                }
+                else
+                {
+                    notification("Không có file InputReportTemplate.docx","Thông báo");
+                }
+            }
+            catch (Exception)
+            {
+                notification("Lỗi khi tìm file mẫu báo cáo", "Thông báo");
+            }
+        }
+        private DocX CreateWordFromTemplate(DocX template)
+        {
+            //template.AddCustomProperty(new CustomProperty("Từ ngày: ", StartDateFilter));
+            //template.AddCustomProperty(new CustomProperty("Đến ngày: ", EndDateFilter));
+            //template.AddCustomProperty(new CustomProperty("Tổng tiền nhập hàng: ", total));      
+
+            var t = template.Tables[0];
+            CreateAndInsertWordTableAfter(t, ref template);
+            t.Remove();
+            return template;
+        }
+        private Table CreateAndInsertWordTableAfter(Table t, ref DocX document)
+        {
+            var data = GetDataFromDatabase();
+
+            var invoiceTable = t.InsertTableAfterSelf(data.Rows.Count + 1, data.Columns.Count);
+            invoiceTable.Design = TableDesign.LightGridAccent2;
+
+            var tableTitle = new Formatting();
+
+            tableTitle.Bold = true;
+
+            invoiceTable.Rows[0].Cells[0].InsertParagraph("Mã phiếu nhập", false, tableTitle);
+            invoiceTable.Rows[0].Cells[1].InsertParagraph("Ngày nhập", false, tableTitle);
+            invoiceTable.Rows[0].Cells[2].InsertParagraph("Tổng tiền", false, tableTitle);
+            invoiceTable.Rows[0].Cells[3].InsertParagraph("Trạng thái", false, tableTitle);
+
+            for (var row = 1; row < invoiceTable.RowCount; row++)
+            {
+                for (var cell = 0; cell < invoiceTable.ColumnCount; cell++)
+                {
+                    invoiceTable.Rows[row].Cells[cell].InsertParagraph(data.Rows[row - 1].ItemArray[cell].ToString(), false);
+                }
+            }
+            return invoiceTable;
+        }
+        private DataTable GetDataFromDatabase()
+        {
+            var table = new DataTable();
+            table.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("ID"),
+                new DataColumn("DATE_INPUT"),
+                new DataColumn("TOTAL"),
+                new DataColumn("STATUS")
+            });
+
+            foreach(var item in InputList)
+            {
+                table.Rows.Add(item.ID, item.DATE_INPUT, item.TOTAL, item.STATUS);
+            }
+
+            return table;
         }
     }
     public class Status

@@ -22,7 +22,8 @@
         Name="suplierWindow"
         Title="Nhà cung cấp" Height="500" Width="700">
 
-    <Grid>
+    <Grid
+        Background="AliceBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>

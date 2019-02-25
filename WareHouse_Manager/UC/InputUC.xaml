@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Border BorderBrush="Black"
                 BorderThickness="0 0 0 2">
@@ -23,16 +23,19 @@
                 <ColumnDefinition Width="115"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <DatePicker
+                SelectedDate="{Binding StartDateFilter}"
                 Grid.Column="0"
                   Width="100"
                   materialDesign:HintAssist.Hint="Ngày bắt đầu"
                   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
             <DatePicker
+                SelectedDate="{Binding EndDateFilter}"
                 Grid.Column="1"
                   Width="100"
                   materialDesign:HintAssist.Hint="Ngày kết thúc"
                   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
             <Button
+                Command="{Binding FilterInputCommand}"
                 Margin="0 10 0 0"
                 Grid.Column="2"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
@@ -40,6 +43,7 @@
                 Lọc
             </Button>
             <Button
+                Command="{Binding AllInputCommand}"
                 Margin="15 10 0 0"
                 Grid.Column="3"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
@@ -56,12 +60,14 @@
                 VerticalScrollBarVisibility="Visible" 
                 Grid.Row="1"
                 Margin="5">
-                <ListView>
+                <ListView 
+                    ItemsSource="{Binding InputList}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Mã phiếu nhập"></GridViewColumn>
-                            <GridViewColumn Header="Ngày nhập"></GridViewColumn>
-                            <GridViewColumn Header="Trạng thái"></GridViewColumn>
+                            <GridViewColumn Header="Mã phiếu nhập" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                            <GridViewColumn Header="Ngày nhập" DisplayMemberBinding="{Binding DATE_INPUT,StringFormat=dd/MM/yyyy}"></GridViewColumn>
+                            <GridViewColumn Header="Tông tiền" DisplayMemberBinding="{Binding TOTAL}"></GridViewColumn>
+                            <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding STATUS}"></GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -69,7 +75,16 @@
         </Grid>
 
         <Grid Grid.Row="2">
+            <TextBlock
+                Margin="10 0 0 0"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                Text="{Binding TotalInputMoney}"
+                FontSize="20"
+                Foreground="Green"></TextBlock>
             <Button
+                HorizontalAlignment="Right"
+                Command="{Binding ExportInputReportCommand}"
                 FontWeight="Bold"
                 FontSize="20"
                 Height="40"

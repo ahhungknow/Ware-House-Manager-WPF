@@ -21,7 +21,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Name="inputWindow"
-        Title="Nhập kho" Height="450" Width="1150">
+        Title="Nhập kho" Height="600" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -41,6 +41,7 @@
 
             <Grid Grid.Column="0">
                 <GroupBox
+                                        Background="AliceBlue"
                         Margin="0 0 0 0"
                         Header="Phiếu nhập"
                         FontSize="20"
@@ -90,6 +91,7 @@
                                         <GridView>
                                             <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
                                             <GridViewColumn Header="Ngày nhập" DisplayMemberBinding="{Binding DATE_INPUT,StringFormat=dd/MM/yyyy}"></GridViewColumn>
+                                            <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TOTAL}"></GridViewColumn>
                                             <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding STATUS}"></GridViewColumn>
                                         </GridView>
                                     </ListView.View>
@@ -183,6 +185,7 @@
                 </GroupBox>
             </Grid>
             <GroupBox 
+                                    Background="AliceBlue"
                     FontSize="20"
                     FontWeight="Bold"
                     Header="Chi tiết phiếu nhập"

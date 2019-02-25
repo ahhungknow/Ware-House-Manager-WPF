@@ -114,3 +114,5 @@ E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\CustomerUC.baml
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\OutputDetailUC.baml
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\OutputUC.baml
 E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\UC\SuplierUC.baml
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\bin\Debug\Xceed.Words.NET.dll
+E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\bin\Debug\MaterialDesignColors.pdb

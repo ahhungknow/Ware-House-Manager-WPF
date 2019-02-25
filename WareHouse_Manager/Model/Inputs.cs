@@ -11,5 +11,6 @@ namespace WareHouse_Manager.Model
         public string ID { get; set; }
         public DateTime DATE_INPUT { get; set; }
         public string STATUS { get; set; }
+        public int TOTAL { get; set; }
     }
 }
