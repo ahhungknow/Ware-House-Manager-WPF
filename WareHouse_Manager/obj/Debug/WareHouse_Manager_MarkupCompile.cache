@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\
+E:\Dev\C#\WPF\Ware-House-Manager-WPF\WareHouse_Manager\obj\Debug\
 WareHouse_Manager
 none
 false
 DEBUG;TRACE
-E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\App.xaml
+E:\Dev\C#\WPF\Ware-House-Manager-WPF\WareHouse_Manager\App.xaml
 19969285657
 2-1676159946
 56-859458608
-27-1424576971
+271117238285
 CustomerWindow.xaml;InputWindow.xaml;LoginWindow.xaml;MainWindow.xaml;OutputWindow.xaml;ObjectTypeWindow.xaml;ResourceXAML\AllResource.xaml;SetInventoryDateWindow.xaml;StatisticalWindow.xaml;SuplierWindow.xaml;UC\ControlBarUC.xaml;UC\CustomerUC.xaml;UC\InputDetailUC.xaml;UC\InputUC.xaml;UC\NotificationUC.xaml;UC\OutputDetailUC.xaml;UC\OutputUC.xaml;UC\SuplierUC.xaml;UnitWindow.xaml;
 
 False

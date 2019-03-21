@@ -239,7 +239,7 @@ namespace WareHouse_Manager.ViewModel
                     {
                         if (File.Exists(@"newInputReport.docx"))
                         {
-                            Process.Start(@"E:\GitHub\Ware-House-Manager-WPF\WareHouse_Manager\bin\Debug\newInputReport.docx");
+                            Process.Start(AppDomain.CurrentDomain.BaseDirectory+ @"\newInputReport.docx");
                         }
                         else
                         {
